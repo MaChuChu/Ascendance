@@ -51,7 +51,7 @@ public class Ascendance extends Application {
         map = new MapGeneration(gameRoot);
         map.createRoom();
         
-        P1 = new Player(gameRoot, uiRoot, map.currentLevel);
+        P1 = new Player(gameRoot, uiRoot, map);
 
         appRoot.getChildren().addAll(bg, gameRoot, uiRoot);
     }
@@ -89,16 +89,14 @@ public class Ascendance extends Application {
                 if (P1.isAlive) {
                     P1.movePlayer(map.edges);
                 }
-                
-                
-                
-                if (enemy_timeRemain>0) {
-                    enemy_timeRemain--;
-                }
+
                 for (Enemy e: map.enemies) {
                     e.enemyMove(P1.x, P1.y);
                     e.onHit(P1, map);
-                    bullet_timeRemain = bullet_maxTime;
+                    for (Drop drop: e.drops) {
+                        drop.healthPickUp(P1);
+                    }
+                    enemy_timeRemain = enemy_maxTime;
                 }
 
                 if(bullet_timeRemain>0){
@@ -115,7 +113,6 @@ public class Ascendance extends Application {
                         P1.Bullets.remove(bullet);
                     }
                 }
-                
             }
         };
         timer.start();

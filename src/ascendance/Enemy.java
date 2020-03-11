@@ -5,6 +5,7 @@
  */
 package ascendance;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 import javafx.geometry.Point2D;
@@ -28,6 +29,7 @@ class Enemy {
     boolean isAlive;
 
     double xVector, yVector;
+    ArrayList<Drop> drops;
 
     Enemy() {
         Random rand = new Random();
@@ -44,7 +46,8 @@ class Enemy {
     }
 
     Enemy(Pane gameRoot) {
-
+        drops = new ArrayList<>();
+        
         Health = 50;
         Attack = 3;
         isAlive = true;
@@ -102,7 +105,8 @@ class Enemy {
     }
 
     public void onDrop() {
-        Drops healthUp = new Drops(x, y, gameRoot);
+        Drop healthUp = new Drop(x, y, gameRoot);
+        drops.add(healthUp);
     }
 
     public void enemyMove(double playerX, double playerY) {

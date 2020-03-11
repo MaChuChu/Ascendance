@@ -35,9 +35,10 @@ public class Player {
     double xSpeed, ySpeed;
     
     ArrayList<Bullet> Bullets;
+    MapGeneration map;
     String[] currentLevel;
     
-    Player(Pane gameRoot, Pane uiRoot, String[] currentLevel) {
+    Player(Pane gameRoot, Pane uiRoot, MapGeneration map) {
         radius = 20;
         x = 1024/2 - radius; 
         y = 768/2 - radius;
@@ -48,7 +49,7 @@ public class Player {
         Attack = 5;
         xSpeed = ySpeed = 7;
         isAlive = true;
-        this.currentLevel = currentLevel;
+        currentLevel = map.currentLevel;
         
         this.gameRoot = gameRoot;
         this.uiRoot = uiRoot;
@@ -126,20 +127,11 @@ public class Player {
         player.setCenterX(x);
         player.setCenterY(y);
     }
-    
-    public boolean collision(Node edge){
-        if (player.getBoundsInParent().intersects(edge.getBoundsInParent())) {
-            return true;                  
-        }else{
-            return false;
-        }
-    }
 
     public void shootBullet(double mouseX, double mouseY) {
         Bullet newBullet = new Bullet(x, y, mouseX, mouseY);
         Bullets.add(newBullet);
         gameRoot.getChildren().add(newBullet.bullet);
     }
-
-        
+           
 }
