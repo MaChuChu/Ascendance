@@ -22,10 +22,12 @@ class MapGeneration {
     ArrayList<Node> edges;
     ArrayList<Node> exits;
     ArrayList<Node> objects;
+    
     ArrayList<Enemy> enemies;
     ArrayList<Drop> healthUp;
+    ArrayList<Drop> attackUp;
     
-    public String[][][] layout;
+    String[][][] layout;
     String[] currentLevel;
     
     MapGeneration(Pane gameRoot) {
@@ -33,26 +35,30 @@ class MapGeneration {
         
         edges = new ArrayList<>();
         exits = new ArrayList<>();
-        enemies = new ArrayList<>();
         objects = new ArrayList<>();
+        
+        enemies = new ArrayList<>();
         healthUp = new ArrayList<>();
+        attackUp = new ArrayList<>();
         
         currentLevel = LevelData.L;
         
-        Random rand = new Random();
+        layout = new String[10][10][];
+        
+//        Random rand = new Random();
         //3d array
         //2d map layout, each element contains a 1D array of the level
         // by not specifying final dimension, can have a ragged array
         // therefore rooms can be of different sizes
-        layout = new String[4][4][];
-        layout[0][0]= LevelData.L;
-        for (int i = 0; i < 10; i++) {
-            int max = layout[0][0].length;
-            int x = rand.nextInt(max-2)+2;
-            int y = rand.nextInt(max-2)+2;
-            layout[0][0][y] = layout[0][0][y].substring(0,x+1) + Integer.toString(rand.nextInt(3)+2) + layout[0][0][y].substring(x+2);
-        }
-        System.out.println(Arrays.toString(layout[0][0]));
+//        layout = new String[4][4][];
+//        layout[0][0]= LevelData.L;
+//        for (int i = 0; i < 10; i++) {
+//            int max = layout[0][0].length;
+//            int x = rand.nextInt(max-2)+2;
+//            int y = rand.nextInt(max-2)+2;
+//            layout[0][0][y] = layout[0][0][y].substring(0,x+1) + Integer.toString(rand.nextInt(3)+2) + layout[0][0][y].substring(x+2);
+//        }
+//        System.out.println(Arrays.toString(layout[0][0]));
         
     }
     
@@ -107,7 +113,8 @@ class MapGeneration {
     }
     
     public void createLayout(){
-        
+        //starting room at center of array
+
     }
 
     public void dropPickUp(Player P1) {
@@ -117,6 +124,14 @@ class MapGeneration {
                 P1.UpdateStats();
                 gameRoot.getChildren().remove(drop.drop);
                 healthUp.remove(drop);
+            }
+        }
+        for (Drop drop: attackUp) {
+            if (drop.drop.getBoundsInParent().intersects(P1.player.getBoundsInParent())) {
+                P1.Attack+=1;
+                P1.UpdateStats();
+                gameRoot.getChildren().remove(drop.drop);
+                attackUp.remove(drop);
             }
         }
     }

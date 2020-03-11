@@ -26,7 +26,7 @@ public class Player {
     Pane gameRoot, uiRoot;
     double x,y, radius;
     double Health, Attack;
-    Text healthText;
+    Text healthText, attackText;
     Rectangle healthBar, healthBarBackground;
     boolean isAlive;
     Circle player;
@@ -63,13 +63,20 @@ public class Player {
         healthText = new Text(30, 37, Double.toString(Health));
         healthText.setFill(Color.AQUA);
         healthText.setFont(Font.font(null, FontWeight.BOLD, 20));
-        uiRoot.getChildren().addAll(healthBarBackground, healthBar, healthText);
+        
+        attackText = new Text(50, 100, Double.toString(Attack));
+        attackText.setFill(Color.AQUA);
+        attackText.setFont(Font.font(null, FontWeight.BOLD, 20));
+        
+        uiRoot.getChildren().addAll(healthBarBackground, healthBar, healthText, attackText);
         
     }
     
     public void UpdateStats(){
         healthText.setText(Double.toString(Health));
         healthBar.setWidth(Health);
+        
+        attackText.setText(Double.toString(Attack));
     }
     
     public void keyPressed(KeyEvent code) {

@@ -19,10 +19,10 @@ class Drop {
     Pane gameRoot;
     Circle drop;
 
-    Drop(double x, double y, Pane gameRoot) {
+    Drop(double x, double y, Pane gameRoot, Color colour) {
         this.gameRoot = gameRoot;
-        drop = new Circle(x, y, 3);
-        drop.setFill(Color.CHARTREUSE);
+        drop = new Circle(x, y, 5);
+        drop.setFill(colour);
         gameRoot.getChildren().add(drop);
     }
  

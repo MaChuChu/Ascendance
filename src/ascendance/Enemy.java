@@ -104,8 +104,16 @@ class Enemy {
     }
 
     public void onDrop(MapGeneration map, Player P1) {
-        Drop healthUp = new Drop(x, y, gameRoot);
-        map.healthUp.add(healthUp);
+        Random rand = new Random();
+        int randNumb = rand.nextInt(2);
+        if (randNumb == 1) {
+            Drop healthUp = new Drop(x, y, gameRoot, Color.DARKSEAGREEN);
+            map.healthUp.add(healthUp);
+        }else if(randNumb == 0){
+            Drop attackUp = new Drop(x, y, gameRoot, Color.CRIMSON);
+            map.attackUp.add(attackUp);
+        }
+        
     }
 
     public void enemyMove(double playerX, double playerY) {
