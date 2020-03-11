@@ -90,6 +90,7 @@ class Enemy {
         for (Enemy enemy : map.enemies) {
             if (P1.player.getBoundsInParent().intersects(enemy.enemy.getBoundsInParent())) {
                 P1.Health = P1.Health - enemy.Attack;
+                P1.healthText.setText(Double.toString(P1.Health));
                 P1.healthBar.setWidth(P1.Health);
                 if (P1.Health <= 0) {
                     P1.isAlive = false;

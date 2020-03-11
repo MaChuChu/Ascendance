@@ -39,6 +39,9 @@ public class Ascendance extends Application {
     final int bullet_maxTime = 7;
     private int bullet_timeRemain;
     
+    final int enemy_maxTime = 100;
+    private int enemy_timeRemain;
+    
     int timeTotal = 300;
 
     private void initContent() {
@@ -69,6 +72,7 @@ public class Ascendance extends Application {
         });
         
         bullet_timeRemain = 0; 
+        enemy_timeRemain = 0;
         scene.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -86,11 +90,17 @@ public class Ascendance extends Application {
                     P1.movePlayer(map.edges);
                 }
                 
+                
+                
+                if (enemy_timeRemain>0) {
+                    enemy_timeRemain--;
+                }
                 for (Enemy e: map.enemies) {
                     e.enemyMove(P1.x, P1.y);
                     e.onHit(P1, map);
+                    bullet_timeRemain = bullet_maxTime;
                 }
-                
+
                 if(bullet_timeRemain>0){
                     bullet_timeRemain--;
                 }

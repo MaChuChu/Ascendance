@@ -6,9 +6,6 @@
 package ascendance;
 
 import java.util.ArrayList;
-import java.util.Random;
-import javafx.geometry.Point2D;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -16,6 +13,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -26,6 +26,7 @@ public class Player {
     Pane gameRoot, uiRoot;
     double x,y, radius;
     double Health, Attack;
+    Text healthText;
     Rectangle healthBar, healthBarBackground;
     boolean isAlive;
     Circle player;
@@ -58,8 +59,10 @@ public class Player {
         healthBarBackground = new Rectangle(20, 20, Health, 20);
         healthBarBackground.setFill(Color.AZURE);
         healthBarBackground.setStroke(Color.AZURE);
-        
-        uiRoot.getChildren().addAll(healthBarBackground, healthBar);
+        healthText = new Text(30, 37, Double.toString(Health));
+        healthText.setFill(Color.AQUA);
+        healthText.setFont(Font.font(null, FontWeight.BOLD, 20));
+        uiRoot.getChildren().addAll(healthBarBackground, healthBar, healthText);
         
     }
     
@@ -77,9 +80,7 @@ public class Player {
                 break;
             case D:
                 right = true;
-                break;
-
-          
+                break; 
         }
         
     }
