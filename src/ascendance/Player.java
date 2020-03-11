@@ -67,6 +67,11 @@ public class Player {
         
     }
     
+    public void UpdateStats(){
+        healthText.setText(Double.toString(Health));
+        healthBar.setWidth(Health);
+    }
+    
     public void keyPressed(KeyEvent code) {
         KeyCode kc = code.getCode();
         switch(kc){

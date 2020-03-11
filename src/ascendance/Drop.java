@@ -5,6 +5,7 @@
  */
 package ascendance;
 
+import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -24,11 +25,5 @@ class Drop {
         drop.setFill(Color.CHARTREUSE);
         gameRoot.getChildren().add(drop);
     }
-    
-    public void healthPickUp(Player P1){
-        if (P1.player.getBoundsInParent().intersects(drop.getBoundsInParent())) {
-            gameRoot.getChildren().remove(drop);
-            P1.Health = P1.Health + 5;
-        }
-    }
+ 
 }

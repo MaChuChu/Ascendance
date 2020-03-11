@@ -23,6 +23,7 @@ class MapGeneration {
     ArrayList<Node> exits;
     ArrayList<Node> objects;
     ArrayList<Enemy> enemies;
+    ArrayList<Drop> healthUp;
     
     public String[][][] layout;
     String[] currentLevel;
@@ -34,6 +35,7 @@ class MapGeneration {
         exits = new ArrayList<>();
         enemies = new ArrayList<>();
         objects = new ArrayList<>();
+        healthUp = new ArrayList<>();
         
         currentLevel = LevelData.L;
         
@@ -106,6 +108,15 @@ class MapGeneration {
     
     public void createLayout(){
         
+    }
+
+    public void dropPickUp(Player P1) {
+        for (Drop drop: healthUp) {
+            if (drop.drop.getBoundsInParent().intersects(P1.player.getBoundsInParent())) {
+                P1.Health+=5;
+                P1.UpdateStats();
+            }
+        }
     }
     
 }

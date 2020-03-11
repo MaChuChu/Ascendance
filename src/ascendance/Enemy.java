@@ -82,7 +82,7 @@ class Enemy {
                     enemy.Health = enemy.Health - P1.Attack;
                     enemy.healthBar.setWidth(enemy.Health);
                     if (enemy.Health <= 0) {
-                        onDrop();
+                        onDrop(map, P1);
                         gameRoot.getChildren().remove(enemy.enemy);
                         map.enemies.remove(enemy);
                         gameRoot.getChildren().remove(enemy.healthBarStuff);
@@ -93,8 +93,7 @@ class Enemy {
         for (Enemy enemy : map.enemies) {
             if (P1.player.getBoundsInParent().intersects(enemy.enemy.getBoundsInParent())) {
                 P1.Health = P1.Health - enemy.Attack;
-                P1.healthText.setText(Double.toString(P1.Health));
-                P1.healthBar.setWidth(P1.Health);
+                P1.UpdateStats();
                 if (P1.Health <= 0) {
                     P1.isAlive = false;
                     System.exit(1);
@@ -104,9 +103,9 @@ class Enemy {
 
     }
 
-    public void onDrop() {
+    public void onDrop(MapGeneration map, Player P1) {
         Drop healthUp = new Drop(x, y, gameRoot);
-        drops.add(healthUp);
+        map.healthUp.add(healthUp);
     }
 
     public void enemyMove(double playerX, double playerY) {

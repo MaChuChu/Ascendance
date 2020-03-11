@@ -93,9 +93,6 @@ public class Ascendance extends Application {
                 for (Enemy e: map.enemies) {
                     e.enemyMove(P1.x, P1.y);
                     e.onHit(P1, map);
-                    for (Drop drop: e.drops) {
-                        drop.healthPickUp(P1);
-                    }
                     enemy_timeRemain = enemy_maxTime;
                 }
 
@@ -113,6 +110,8 @@ public class Ascendance extends Application {
                         P1.Bullets.remove(bullet);
                     }
                 }
+                
+                map.dropPickUp(P1);
             }
         };
         timer.start();
