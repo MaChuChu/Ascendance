@@ -115,6 +115,8 @@ class MapGeneration {
             if (drop.drop.getBoundsInParent().intersects(P1.player.getBoundsInParent())) {
                 P1.Health+=5;
                 P1.UpdateStats();
+                gameRoot.getChildren().remove(drop.drop);
+                healthUp.remove(drop);
             }
         }
     }
