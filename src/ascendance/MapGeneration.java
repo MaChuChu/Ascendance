@@ -120,9 +120,8 @@ class MapGeneration {
     public void exit(Player P1){
         for (Node exit: exits) {
             if (P1.player.getBoundsInParent().intersects(exit.getBoundsInParent())) {
-                MapGeneration map = new MapGeneration(gameRoot);
-                map.currentLevel = LevelData.R;
-                map.createRoom();
+                currentLevel = LevelData.R;
+                createRoom();
                 break;
             }
         }

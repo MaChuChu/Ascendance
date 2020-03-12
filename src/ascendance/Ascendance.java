@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import mapGeneration.LevelGeneration;
 
 
 /**
@@ -54,6 +55,9 @@ public class Ascendance extends Application {
         P1 = new Player(gameRoot, uiRoot, map);
 
         appRoot.getChildren().addAll(bg, gameRoot, uiRoot);
+        
+        LevelGeneration test = new LevelGeneration();
+        test.output();
     }
    
     private void gameLoop() {
