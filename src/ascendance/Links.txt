@@ -16,3 +16,6 @@ https://uheartbeast.tumblr.com/post/144928301893/level-generation-in-the-godot-e
 
 ////////REDDIT////////////////////////////
 https://www.reddit.com/r/godot/comments/8t0l1l/2d_random_dungeon_generation_question_similar_to/
+
+///Procedural vs Pre-made maps////////////
+https://gamedev.stackexchange.com/questions/58306/random-procedural-vs-previously-made-level-generation/58326#58326

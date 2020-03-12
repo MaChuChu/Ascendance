@@ -123,6 +123,7 @@ class MapGeneration {
                 MapGeneration map = new MapGeneration(gameRoot);
                 map.currentLevel = LevelData.R;
                 map.createRoom();
+                break;
             }
         }
     }
