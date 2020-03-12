@@ -112,6 +112,7 @@ public class Ascendance extends Application {
                 }
                 
                 map.dropPickUp(P1);
+                map.exit(P1);
             }
         };
         timer.start();
