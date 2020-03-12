@@ -119,20 +119,19 @@ public class Player {
     
     
     public void movePlayer(ArrayList<Node> edges) {
-        int playerTileX = (int)(x/64);
-        int playerTileY = (int)(y/64);
+        int playerTileX = (int)Math.round(x/72);
+        int playerTileY = (int)Math.round(y/72);
         
-        if(right && currentLevel[playerTileY].charAt(playerTileX + 1) == '0') {
-            System.out.println((currentLevel[playerTileY].charAt(playerTileX + 1)));
+        if(right && currentLevel[playerTileY].charAt(playerTileX + 1) != '1') {
             x += xSpeed;
         }
-        else if(left && currentLevel[playerTileY].charAt(playerTileX - 1) == '0'){
+        else if(left && currentLevel[playerTileY].charAt(playerTileX - 1) != '1'){
             x -= xSpeed;
         }
-        if(up && currentLevel[playerTileY - 1].charAt(playerTileX) == '0'){
+        if(up && currentLevel[playerTileY - 1].charAt(playerTileX) != '1'){
             y -= ySpeed;
         }
-        else if(down && currentLevel[playerTileY + 1].charAt(playerTileX) == '0'){
+        else if(down && currentLevel[playerTileY + 1].charAt(playerTileX) != '1'){
             y += ySpeed;
         }
         
