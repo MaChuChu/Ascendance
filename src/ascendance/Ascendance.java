@@ -5,6 +5,7 @@
  */
 package ascendance;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -91,7 +92,7 @@ public class Ascendance extends Application {
             @Override
             public void handle(long now) {
                 if (P1.isAlive) {
-                    P1.movePlayer(map.edges);
+                    P1.movePlayer();
                 }
 
                 for (Enemy e: map.enemies) {

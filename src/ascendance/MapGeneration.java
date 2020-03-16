@@ -18,7 +18,7 @@ import javafx.scene.shape.Rectangle;
  * @author Ranjeth
  */
 class MapGeneration {
-    Pane gameRoot;
+    Pane gameRoot, uiRoot;
     ArrayList<Node> edges;
     ArrayList<Node> exits;
     ArrayList<Node> objects;
@@ -26,6 +26,8 @@ class MapGeneration {
     ArrayList<Enemy> enemies;
     ArrayList<Drop> healthUp;
     ArrayList<Drop> attackUp;
+    
+    Player player;
     
     String[][][] layout;
     String[] currentLevel;
@@ -40,8 +42,8 @@ class MapGeneration {
         enemies = new ArrayList<>();
         healthUp = new ArrayList<>();
         attackUp = new ArrayList<>();
-        
-        currentLevel = LevelData.L;
+               
+        currentLevel = LevelData.noExit;
         
         layout = new String[10][10][];
         
